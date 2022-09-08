@@ -8,7 +8,10 @@ import {
   Image,
   Platform,
   StatusBar,
+  TouchableHighlight,
 } from "react-native";
+
+// import { StackNavigator } from "react-navigation";
 
 export default function App() {
   return (
@@ -23,33 +26,49 @@ export default function App() {
         <Text style={styles.title}>Bienvenido, Usuario</Text>
         <View style={styles.lineStyle} />
         <View style={styles.cardsContainer}>
+          <TouchableHighlight>
+            <View style={styles.menuCard}>
+              <Image
+                style={styles.tinyLogo}
+                source={require("./assets/plomeria.png")}
+              ></Image>
+              <Text style={styles.textCard}>Plomería</Text>
+            </View>
+          </TouchableHighlight>
           <View style={styles.menuCard}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/plomeria.png")}
+              source={require("./assets/carpinteria.png")}
             ></Image>
-            <Text style={styles.textCard}>Plomería</Text>
+            <Text style={styles.textCard}>Carpintería</Text>
           </View>
           <View style={styles.menuCard}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/plomeria.png")}
+              source={require("./assets/electricista.png")}
             ></Image>
-            <Text style={styles.textCard}>Plomería</Text>
+            <Text style={styles.textCard}>Electricista</Text>
           </View>
           <View style={styles.menuCard}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/plomeria.png")}
+              source={require("./assets/pintor.png")}
             ></Image>
-            <Text style={styles.textCard}>Plomería</Text>
+            <Text style={styles.textCard}>Pintor</Text>
           </View>
           <View style={styles.menuCard}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/plomeria.png")}
+              source={require("./assets/instalaciones.png")}
             ></Image>
-            <Text style={styles.textCard}>Plomería</Text>
+            <Text style={styles.textCard}>Instalaciones</Text>
+          </View>
+          <View style={styles.menuCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("./assets/jardineria.png")}
+            ></Image>
+            <Text style={styles.textCard}>Jardinería</Text>
           </View>
         </View>
       </View>
@@ -95,6 +114,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     borderRadius: 18,
     marginTop: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 170,
   },
   textCard: {
     marginTop: 20,
