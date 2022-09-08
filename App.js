@@ -8,10 +8,14 @@ import {
   Image,
   Platform,
   StatusBar,
-  TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 
-// import { StackNavigator } from "react-navigation";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Especialidad } from "./Especialidad";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -22,57 +26,74 @@ export default function App() {
           source={require("./assets/menu-hamburger.png")}
         ></Image>
       </View>
-      <View style={styles.content}>
-        <Text style={styles.title}>Bienvenido, Usuario</Text>
-        <View style={styles.lineStyle} />
-        <View style={styles.cardsContainer}>
-          <TouchableHighlight>
-            <View style={styles.menuCard}>
-              <Image
-                style={styles.tinyLogo}
-                source={require("./assets/plomeria.png")}
-              ></Image>
-              <Text style={styles.textCard}>Plomería</Text>
-            </View>
-          </TouchableHighlight>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Especialidad" component={Especialidad} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
+  );
+}
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={styles.content}>
+      <Text style={styles.title}>Bienvenido, Usuario</Text>
+      <View style={styles.lineStyle} />
+      <View style={styles.cardsContainer}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Especialidad", {
+              nombreEspecialidad: "Plomería",
+            })
+          }
+        >
           <View style={styles.menuCard}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/carpinteria.png")}
+              source={require("./assets/plomeria.png")}
             ></Image>
-            <Text style={styles.textCard}>Carpintería</Text>
+            <Text style={styles.textCard}>Plomería</Text>
           </View>
-          <View style={styles.menuCard}>
-            <Image
-              style={styles.tinyLogo}
-              source={require("./assets/electricista.png")}
-            ></Image>
-            <Text style={styles.textCard}>Electricista</Text>
-          </View>
-          <View style={styles.menuCard}>
-            <Image
-              style={styles.tinyLogo}
-              source={require("./assets/pintor.png")}
-            ></Image>
-            <Text style={styles.textCard}>Pintor</Text>
-          </View>
-          <View style={styles.menuCard}>
-            <Image
-              style={styles.tinyLogo}
-              source={require("./assets/instalaciones.png")}
-            ></Image>
-            <Text style={styles.textCard}>Instalaciones</Text>
-          </View>
-          <View style={styles.menuCard}>
-            <Image
-              style={styles.tinyLogo}
-              source={require("./assets/jardineria.png")}
-            ></Image>
-            <Text style={styles.textCard}>Jardinería</Text>
-          </View>
+        </TouchableOpacity>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/carpinteria.png")}
+          ></Image>
+          <Text style={styles.textCard}>Carpintería</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/electricista.png")}
+          ></Image>
+          <Text style={styles.textCard}>Electricista</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/pintor.png")}
+          ></Image>
+          <Text style={styles.textCard}>Pintor</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/instalaciones.png")}
+          ></Image>
+          <Text style={styles.textCard}>Instalaciones</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/jardineria.png")}
+          ></Image>
+          <Text style={styles.textCard}>Jardinería</Text>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

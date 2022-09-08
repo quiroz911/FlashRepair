@@ -9,7 +9,8 @@ import {
   StatusBar,
 } from "react-native";
 
-export default function Especialidad(nombreEspecialidad) {
+export function Especialidad({ route, navigation }) {
+  const { nombreEspecialidad } = route.params;
   return (
     <SafeAreaView>
       <Text>{nombreEspecialidad}</Text>
