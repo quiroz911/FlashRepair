@@ -59,41 +59,81 @@ function HomeScreen({ navigation }) {
             <Text style={styles.textCard}>Plomería</Text>
           </View>
         </TouchableOpacity>
-        <View style={styles.menuCard}>
-          <Image
-            style={styles.tinyLogo}
-            source={require("./assets/carpinteria.png")}
-          ></Image>
-          <Text style={styles.textCard}>Carpintería</Text>
-        </View>
-        <View style={styles.menuCard}>
-          <Image
-            style={styles.tinyLogo}
-            source={require("./assets/electricista.png")}
-          ></Image>
-          <Text style={styles.textCard}>Electricista</Text>
-        </View>
-        <View style={styles.menuCard}>
-          <Image
-            style={styles.tinyLogo}
-            source={require("./assets/pintor.png")}
-          ></Image>
-          <Text style={styles.textCard}>Pintor</Text>
-        </View>
-        <View style={styles.menuCard}>
-          <Image
-            style={styles.tinyLogo}
-            source={require("./assets/instalaciones.png")}
-          ></Image>
-          <Text style={styles.textCard}>Instalaciones</Text>
-        </View>
-        <View style={styles.menuCard}>
-          <Image
-            style={styles.tinyLogo}
-            source={require("./assets/jardineria.png")}
-          ></Image>
-          <Text style={styles.textCard}>Jardinería</Text>
-        </View>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Especialidad", {
+              nombreEspecialidad: "Carpinteria",
+            })
+          }
+        >
+          <View style={styles.menuCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("./assets/carpinteria.png")}
+            ></Image>
+            <Text style={styles.textCard}>Carpintería</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Especialidad", {
+              nombreEspecialidad: "Electricista",
+            })
+          }
+        >
+          <View style={styles.menuCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("./assets/electricista.png")}
+            ></Image>
+            <Text style={styles.textCard}>Electricista</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Especialidad", {
+              nombreEspecialidad: "Pintor",
+            })
+          }
+        >
+          <View style={styles.menuCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("./assets/pintor.png")}
+            ></Image>
+            <Text style={styles.textCard}>Pintor</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Especialidad", {
+              nombreEspecialidad: "Instalaciones",
+            })
+          }
+        >
+          <View style={styles.menuCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("./assets/instalaciones.png")}
+            ></Image>
+            <Text style={styles.textCard}>Instalaciones</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Especialidad", {
+              nombreEspecialidad: "Jardineria",
+            })
+          }
+        >
+          <View style={styles.menuCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("./assets/jardineria.png")}
+            ></Image>
+            <Text style={styles.textCard}>Jardinería</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
