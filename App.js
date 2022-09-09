@@ -1,75 +1,154 @@
-import React, { useState } from "react";
-import { SafeAreaView, View, Button, Image, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+// import { StatusBar } from "expo-status-bar";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Button,
+  Image,
+  Platform,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Especialidad } from "./Especialidad";
+import { Contratista } from "./Contratista";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const styles = StyleSheet.create({
-    container: {
-      paddingTop: 100,
-      alignContent: "center",
-      paddingRight: -200
-    },
-    stretch: {
-      width: 150,
-      height: 200,
-      resizeMode: 'stretch',
-    },
-    item: {
-      backgroundColor: 'white',
-      padding: 80,
-      marginVertical: 8,
-      marginHorizontal: 16,
-    },
-    title: {
-      fontSize: 32,
-    },
-  });
-  const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'Mauro',
-    },
-  ];
-
-  const DisplayAnImageWithStyle = () => {
-    const renderItem = ({ item }) => (
-      <Item title={item.title} />
-    );
-    const Separator = () => (
-      <View style={styles.separator} />
-    );
-    const Item = ({ title }) => (
-      <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.text}>calificacion promedio</Text>
-        <Text style={styles.text}>Edad 27 años</Text>
-        <Text style={styles.text}>Direccion : calle 69</Text>
-        <Text style={styles.text}>Plomero</Text>
-      </View>
-    );
-
-    return (
-      <View style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.navbar}>
         <Image
-          style={styles.stretch}
-          source={{
-            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Johnny_Depp_%28July_2009%29_2.jpg/200px-Johnny_Depp_%28July_2009%29_2.jpg',
-          }}
-
-        />
-        <SafeAreaView style={styles.container}>
-          <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-          />
-        </SafeAreaView>
-        <Button
-          title="Continuar"
-        />
+          style={styles.tinyLogo}
+          source={require("./assets/menu-hamburger.png")}
+        ></Image>
       </View>
-
-    );
-  }
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Especialidad" component={Especialidad} />
+          <Stack.Screen name="Contratista" component={Contratista} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
+  );
 }
 
+function HomeScreen({ navigation }) {
+  return (
+    <View style={styles.content}>
+      <Text style={styles.title}>Bienvenido, Usuario</Text>
+      <View style={styles.lineStyle} />
+      <View style={styles.cardsContainer}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Especialidad", {
+              nombreEspecialidad: "Plomería",
+            })
+          }
+        >
+          <View style={styles.menuCard}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("./assets/plomeria.png")}
+            ></Image>
+            <Text style={styles.textCard}>Plomería</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/carpinteria.png")}
+          ></Image>
+          <Text style={styles.textCard}>Carpintería</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/electricista.png")}
+          ></Image>
+          <Text style={styles.textCard}>Electricista</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/pintor.png")}
+          ></Image>
+          <Text style={styles.textCard}>Pintor</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/instalaciones.png")}
+          ></Image>
+          <Text style={styles.textCard}>Instalaciones</Text>
+        </View>
+        <View style={styles.menuCard}>
+          <Image
+            style={styles.tinyLogo}
+            source={require("./assets/jardineria.png")}
+          ></Image>
+          <Text style={styles.textCard}>Jardinería</Text>
+        </View>
+      </View>
+    </View>
+  );
+}
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#323232",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+  navbar: {
+    height: "7%",
+    backgroundColor: "#323232",
+    alignContent: "center",
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+    marginLeft: 10,
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#DBDBDB",
+  },
+  title: {
+    fontSize: 32,
+    color: "white",
+  },
+  lineStyle: {
+    borderWidth: 0.5,
+    width: "90%",
+    borderColor: "#767474",
+    margin: 10,
+  },
+  menuCard: {
+    backgroundColor: "#9E9E9E",
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    borderRadius: 18,
+    marginTop: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 170,
+  },
+  textCard: {
+    marginTop: 20,
+    color: "white",
+    fontSize: 18,
+  },
+  cardsContainer: {
+    justifyContent: "space-around",
+    flexWrap: "wrap",
+    flexDirection: "row",
+  },
+});
