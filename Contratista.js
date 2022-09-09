@@ -13,16 +13,16 @@ import {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 100,
-    alignContent: "center",
-    paddingRight: -200,
+    backgroundColor: "#9E9E9E",
   },
   stretch: {
     width: 150,
     height: 200,
+    marginLeft: 120,
     resizeMode: "stretch",
   },
   item: {
-    backgroundColor: "white",
+    backgroundColor: "#C3BFBE",
     padding: 80,
     marginVertical: 8,
     marginHorizontal: 16,
@@ -46,7 +46,7 @@ export function Contratista() {
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.text}>calificacion promedio</Text>
       <Text style={styles.text}>Edad 27 años</Text>
-      <Text style={styles.text}>Direccion : calle 69</Text>
+      <Text style={styles.text}>Direccion: calle 69</Text>
       <Text style={styles.text}>Plomero</Text>
     </View>
   );
@@ -66,7 +66,10 @@ export function Contratista() {
           keyExtractor={(item) => item.id}
         />
       </SafeAreaView>
-      <Button title="Continuar" />
+      <Button 
+      title="Continuar" 
+      color = '#E8DB15'
+      />
     </View>
   );
 }
