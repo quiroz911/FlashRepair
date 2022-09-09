@@ -12,14 +12,17 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 100,
+    // paddingTop: 100,
+    flex: 1,
+    justifyContent: "space-around",
     backgroundColor: "#9E9E9E",
   },
   stretch: {
     width: 150,
     height: 200,
-    marginLeft: 120,
+    alignSelf: "center",
     resizeMode: "stretch",
+    borderRadius: 20,
   },
   item: {
     backgroundColor: "#C3BFBE",
@@ -59,13 +62,13 @@ export function Contratista() {
           uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Johnny_Depp_%28July_2009%29_2.jpg/200px-Johnny_Depp_%28July_2009%29_2.jpg",
         }}
       />
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </SafeAreaView>
+
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+
       <Button title="Continuar" color="#E8DB15" />
     </View>
   );

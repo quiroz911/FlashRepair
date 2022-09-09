@@ -43,7 +43,7 @@ export function Especialidad({ route, navigation }) {
         onPress={() => navigation.navigate("Contratista")}
       >
         <Image
-          style={{ width: "15%", height: "75%" }}
+          style={{ width: "15%", height: "75%", borderRadius: 12 }}
           source={{
             uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Johnny_Depp_%28July_2009%29_2.jpg/200px-Johnny_Depp_%28July_2009%29_2.jpg",
           }}

@@ -71,7 +71,7 @@ function HomeScreen({ navigation }) {
               style={styles.tinyLogo}
               source={require("./assets/carpinteria.png")}
             ></Image>
-            <Text style={styles.textCard}>Carpintería</Text>
+            <Text style={styles.textCard}>Carpintera</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: "white",
   },
   lineStyle: {
     borderWidth: 0.5,
