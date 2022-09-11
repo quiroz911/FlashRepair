@@ -16,7 +16,7 @@ const contratistas = data.contratistas;
 
 export function Especialidad({ route, navigation }) {
   const { nombreEspecialidad } = route.params;
-  const ListaContratistas = ({ picture, name }) => {
+  const ListaContratistas = ({ picture, name, id }) => {
     return (
       <TouchableOpacity
         style={{
@@ -27,7 +27,11 @@ export function Especialidad({ route, navigation }) {
           flexDirection: "row",
           margin: "2%",
         }}
-        onPress={() => navigation.navigate("Contratista")}
+        onPress={() =>
+          navigation.navigate("Contratista", {
+            idContratista: id,
+          })
+        }
       >
         <Image
           style={{
@@ -46,7 +50,7 @@ export function Especialidad({ route, navigation }) {
   };
 
   const renderItem = ({ item }) => (
-    <ListaContratistas picture={item.picture} name={item.name} />
+    <ListaContratistas picture={item.picture} name={item.name} id={item.id} />
   );
 
   return (
