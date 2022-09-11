@@ -12,9 +12,10 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    // paddingTop: 100,
     flex: 1,
     justifyContent: "space-around",
+    alignItems: "center",
+    padding: "10%",
     backgroundColor: "#9E9E9E",
   },
   stretch: {
@@ -26,9 +27,10 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: "#C3BFBE",
-    padding: 80,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    paddingVertical: "30%",
+    paddingHorizontal: "10%",
+    borderRadius: 20,
+    marginVertical: "10%",
   },
   title: {
     fontSize: 32,
@@ -38,19 +40,33 @@ const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
     title: "Mauro",
+    score: 5,
+    age: 27,
+    address: "calle 69",
+    field: ["Plomeria"],
   },
 ];
 
 export function Contratista() {
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  const renderItem = ({ item }) => (
+    <Item
+      title={item.title}
+      score={item.score}
+      age={item.age}
+      address={item.address}
+      field={item.field}
+    />
+  );
   const Separator = () => <View style={styles.separator} />;
-  const Item = ({ title }) => (
+  const Item = ({ title, score, age, address, field }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.text}>calificacion promedio</Text>
-      <Text style={styles.text}>Edad 27 años</Text>
-      <Text style={styles.text}>Direccion: calle 69</Text>
-      <Text style={styles.text}>Plomero</Text>
+      <Text style={styles.text}>
+        calificacion promedio: {score.toString()} estrellas
+      </Text>
+      <Text style={styles.text}>Edad {age} años</Text>
+      <Text style={styles.text}>Direccion: {address}</Text>
+      <Text style={styles.text}>{field.toString()}</Text>
     </View>
   );
 
