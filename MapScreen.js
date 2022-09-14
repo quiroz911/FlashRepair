@@ -1,7 +1,7 @@
-import React from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { mapStyle } from './mapStyle';
+import React from "react";
+import { StyleSheet, View, Dimensions } from "react-native";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { mapStyle } from "./mapStyle";
 
 export function MapScreen() {
   return (
@@ -11,12 +11,12 @@ export function MapScreen() {
         provider={PROVIDER_GOOGLE}
         style={styles.mapStyle}
         initialRegion={{
-          latitude: 41.3995345,
-          longitude: 2.1909796,
+          latitude: 6.23296,
+          longitude: -75.587024,
           latitudeDelta: 0.003,
           longitudeDelta: 0.003,
         }}
-        mapType="standard"
+        mapType="terrain"
       ></MapView>
     </View>
   );
@@ -25,12 +25,12 @@ export function MapScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
   },
   mapStyle: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
 });
