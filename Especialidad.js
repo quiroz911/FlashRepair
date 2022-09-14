@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
+import { MapScreen } from "./MapScreen";
 //Lectura de API, provisional archivo JSON
 import * as data from "./contratistas.json";
 const contratistas = data.contratistas;
@@ -60,17 +61,10 @@ export function Especialidad({ route, navigation }) {
       <Text style={{ fontSize: 32, marginVertical: 15 }}>
         {nombreEspecialidad}
       </Text>
-      <Image
-        style={{
-          width: "75%",
-          height: "33%",
-          resizeMode: "stretch",
-          marginVertical: 20,
-        }}
-        source={{
-          uri: "https://elcomercio.pe/resizer/vmeQ_oLIRc57kVgxTHVit4M0zhk=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/DKKNSRIX4ZHWJGC62ZS3GBVKNY.jpg",
-        }}
-      ></Image>
+      <MapScreen>
+        
+      </MapScreen>
+ 
       <View
         style={{
           flex: 1,

@@ -15,7 +15,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Especialidad } from "./Especialidad";
 import { Contratista } from "./Contratista";
-import { maps} from "./maps";
 
 const Stack = createNativeStackNavigator();
 

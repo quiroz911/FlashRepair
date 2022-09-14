@@ -12,15 +12,6 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-<<<<<<< HEAD
-    paddingTop: 100,
-    backgroundColor: "#9E9E9E",
-  },
-  stretch: {
-    width: 150,
-    height: 200,
-    marginLeft: 120,
-=======
     flex: 1,
     justifyContent: "space-around",
     alignItems: "center",
@@ -31,24 +22,16 @@ const styles = StyleSheet.create({
     width: "70%",
     height: "50%",
     alignSelf: "center",
->>>>>>> upstream/quiroz
     resizeMode: "stretch",
     borderRadius: 20,
   },
   item: {
-<<<<<<< HEAD
-    backgroundColor: "#C3BFBE",
-    padding: 80,
-    marginVertical: 8,
-    marginHorizontal: 16,
-=======
     flex: 1,
     maxHeight: 500,
     backgroundColor: "#C3BFBE",
     padding: "10%",
     borderRadius: 20,
     marginVertical: "10%",
->>>>>>> upstream/quiroz
   },
   title: {
     fontSize: 32,
@@ -106,19 +89,12 @@ export function Contratista({ route, navigation }) {
         }}
       />
       <Text style={styles.title}>{title}</Text>
-<<<<<<< HEAD
-      <Text style={styles.text}>calificacion promedio</Text>
-      <Text style={styles.text}>Edad 27 años</Text>
-      <Text style={styles.text}>Direccion: calle 69</Text>
-      <Text style={styles.text}>Plomero</Text>
-=======
       <Text style={styles.text}>
         Calificacion promedio: {score.toString()} estrellas
       </Text>
       <Text style={styles.text}>Edad {age} años</Text>
       <Text style={styles.text}>Direccion: {address}</Text>
       <Text style={styles.text}>{field.toString()}</Text>
->>>>>>> upstream/quiroz
     </View>
   );
 
@@ -129,22 +105,8 @@ export function Contratista({ route, navigation }) {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
-<<<<<<< HEAD
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </SafeAreaView>
-      <Button 
-      title="Continuar" 
-      color = '#E8DB15'
-      />
-=======
 
       <Button title="Contratar" color="#E8DB15" />
->>>>>>> upstream/quiroz
     </View>
   );
 }
