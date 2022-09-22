@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   View,
@@ -9,6 +9,7 @@ import {
   Text,
   StatusBar,
 } from "react-native";
+import axios from "axios";
 
 const styles = StyleSheet.create({
   container: {
@@ -53,21 +54,33 @@ const DATA = [
     field: ["Plomeria"],
   },
 ];
-
 //Lectura de API, provisional archivo JSON
-import * as data from "./contratistas.json";
-const contratistas = data.contratistas;
+// import * as data from "./contratistas.json";
+// const contratistas = data.contratistas;
 
 export function Contratista({ route, navigation }) {
-  const { idContratista } = route.params;
-  let contratista = "";
-  contratistas.forEach((element) => {
-    if (element.id === idContratista) {
-      contratista = element;
-    }
-  });
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://demo2641371.mockable.io/contratistas")
+      .then((response) => response.json())
+      .then((json) => setData(json.contratistas))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
   const datos = [];
-  datos.push(contratista);
+  if (!isLoading) {
+    console.log(data);
+    const { idContratista } = route.params;
+    let contratista = "";
+    data.forEach((element) => {
+      if (element.id === idContratista) {
+        contratista = element;
+      }
+    });
+
+    datos.push(contratista);
+  }
 
   const renderItem = ({ item }) => (
     <Item
@@ -100,13 +113,19 @@ export function Contratista({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={datos}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
+      {isLoading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <View>
+          <FlatList
+            data={datos}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
 
-      <Button title="Contratar" color="#E8DB15" />
+          <Button title="Contratar" color="#E8DB15" />
+        </View>
+      )}
     </View>
   );
 }

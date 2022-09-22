@@ -11,6 +11,7 @@ import {
   FlatList,
 } from "react-native";
 import { MapScreen } from "./MapScreen";
+import React, { useState, useEffect } from "react";
 //Lectura de API, provisional archivo JSON
 import * as data from "./contratistas.json";
 const contratistas = data.contratistas;
@@ -61,10 +62,8 @@ export function Especialidad({ route, navigation }) {
       <Text style={{ fontSize: 32, marginVertical: 15 }}>
         {nombreEspecialidad}
       </Text>
-      <MapScreen>
-        
-      </MapScreen>
- 
+      <MapScreen></MapScreen>
+
       <View
         style={{
           flex: 1,
