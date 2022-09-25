@@ -54,9 +54,6 @@ const DATA = [
     field: ["Plomeria"],
   },
 ];
-//Lectura de API, provisional archivo JSON
-// import * as data from "./contratistas.json";
-// const contratistas = data.contratistas;
 
 export function Contratista({ route, navigation }) {
   const [isLoading, setLoading] = useState(true);

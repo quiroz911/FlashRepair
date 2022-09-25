@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
     alignItems: "center",
-    justifyContent: "center",
   },
   mapStyle: {
     width: Dimensions.get("window").width,
