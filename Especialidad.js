@@ -11,11 +11,19 @@ import {
   FlatList,
 } from "react-native";
 import { MapScreen } from "./MapScreen";
-//Lectura de API, provisional archivo JSON
-import * as data from "./contratistas.json";
-const contratistas = data.contratistas;
+import React, { useState, useEffect } from "react";
 
 export function Especialidad({ route, navigation }) {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://demo2641371.mockable.io/contratistas")
+      .then((response) => response.json())
+      .then((json) => setData(json.contratistas))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
+  const contratistas = data;
   const { nombreEspecialidad } = route.params;
   const ListaContratistas = ({ picture, name, id }) => {
     return (
@@ -56,28 +64,35 @@ export function Especialidad({ route, navigation }) {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      style={{
+        flex: 1,
+        justifyContent: "space-between",
+      }}
     >
-      <Text style={{ fontSize: 32, marginVertical: 15 }}>
-        {nombreEspecialidad}
-      </Text>
-      <MapScreen>
-        
-      </MapScreen>
- 
-      <View
-        style={{
-          flex: 1,
-          width: "100%",
-          justifyContent: "center",
-        }}
-      >
-        <FlatList
-          data={contratistas}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
+      {isLoading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <SafeAreaView
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Text style={{ fontSize: 32 }}>{nombreEspecialidad}</Text>
+          <MapScreen></MapScreen>
+
+          <View
+            style={{
+              flex: 1,
+              width: "100%",
+              justifyContent: "center",
+            }}
+          >
+            <FlatList
+              data={contratistas}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+            />
+          </View>
+        </SafeAreaView>
+      )}
     </SafeAreaView>
   );
 }
