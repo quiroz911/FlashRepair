@@ -9,7 +9,6 @@ import {
   Text,
   StatusBar,
 } from "react-native";
-import axios from "axios";
 
 const styles = StyleSheet.create({
   container: {
@@ -44,16 +43,6 @@ const styles = StyleSheet.create({
     marginVertical: "2%",
   },
 });
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "Mauro",
-    score: 5,
-    age: 27,
-    address: "calle 69",
-    field: ["Plomeria"],
-  },
-];
 
 export function Contratista({ route, navigation }) {
   const [isLoading, setLoading] = useState(true);
@@ -67,7 +56,6 @@ export function Contratista({ route, navigation }) {
   }, []);
   const datos = [];
   if (!isLoading) {
-    console.log(data);
     const { idContratista } = route.params;
     let contratista = "";
     data.forEach((element) => {
@@ -120,7 +108,21 @@ export function Contratista({ route, navigation }) {
             keyExtractor={(item) => item.id}
           />
 
-          <Button title="Contratar" color="#E8DB15" />
+          <Button
+            title="Contratar"
+            color="#E8DB15"
+            onPress={() =>
+              navigation.navigate("Contratar", {
+                id: datos[0].id,
+                address: datos[0].address,
+                age: datos[0].age,
+                field: datos[0].field,
+                name: datos[0].name,
+                latitude: datos[0].coordinates.latitude,
+                longitude: datos[0].coordinates.longitude,
+              })
+            }
+          />
         </View>
       )}
     </View>
