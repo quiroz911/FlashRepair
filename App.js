@@ -15,23 +15,21 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Especialidad } from "./Especialidad";
 import { Contratista } from "./Contratista";
+import { Contratar } from "./Contratar";
+import CommonDataManager from "./CommonDataManager";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.navbar}>
-        <Image
-          style={styles.tinyLogo}
-          source={require("./assets/menu-hamburger.png")}
-        ></Image>
-      </View>
+      <View style={styles.navbar}></View>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Especialidad" component={Especialidad} />
           <Stack.Screen name="Contratista" component={Contratista} />
+          <Stack.Screen name="Contratar" component={Contratar} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
@@ -39,6 +37,8 @@ export default function App() {
 }
 
 function HomeScreen({ navigation }) {
+  let commonData = CommonDataManager.getInstance();
+  let numServicios = commonData.getNumServicios();
   return (
     <View style={styles.content}>
       <Text style={styles.title}>Bienvenido, Usuario</Text>
@@ -135,6 +135,9 @@ function HomeScreen({ navigation }) {
           </View>
         </TouchableOpacity>
       </View>
+      <Text style={styles.title}>
+        Tiene contratados: {numServicios} servicios
+      </Text>
     </View>
   );
 }
@@ -146,7 +149,7 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   navbar: {
-    height: "7%",
+    height: "3%",
     backgroundColor: "#323232",
     alignContent: "center",
   },
