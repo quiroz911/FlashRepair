@@ -16,6 +16,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Especialidad } from "./Especialidad";
 import { Contratista } from "./Contratista";
 import { Contratar } from "./Contratar";
+import CommonDataManager from "./CommonDataManager";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,8 @@ export default function App() {
 }
 
 function HomeScreen({ navigation }) {
+  let commonData = CommonDataManager.getInstance();
+  let numServicios = commonData.getNumServicios();
   return (
     <View style={styles.content}>
       <Text style={styles.title}>Bienvenido, Usuario</Text>
@@ -132,6 +135,9 @@ function HomeScreen({ navigation }) {
           </View>
         </TouchableOpacity>
       </View>
+      <Text style={styles.title}>
+        Tiene contratados: {numServicios} servicios
+      </Text>
     </View>
   );
 }
